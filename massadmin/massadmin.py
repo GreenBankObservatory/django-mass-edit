@@ -170,9 +170,11 @@ class MassAdmin(admin.ModelAdmin):
         context.update({
             'add': add,
             'change': change,
+            'has_view_permission': self.has_view_permission(request),
             'has_add_permission': self.has_add_permission(request),
             'has_change_permission': self.has_change_permission(request, obj),
             'has_delete_permission': self.has_delete_permission(request, obj),
+            'has_editable_inline_admin_formsets': False,
             'has_file_field': True,
             'has_absolute_url': hasattr(self.model, 'get_absolute_url'),
             'form_url': mark_safe(form_url),
